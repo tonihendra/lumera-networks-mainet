@@ -18,7 +18,7 @@ Make sure your system meets the following prerequisites to onboard as a Genesis 
 ### Install the `lumerad` binary
 
 ```shell
-wget https://github.com/innovatingcapital/lumera/releases/download/latest/lumera_latest_linux_amd64.tar.gz
+wget https://github.com/LumeraProtocol/lumera/releases/download/v0.4.0/lumera_v0.4.0_linux_amd64.tar.gz
 tar xzvf lumera_latest_linux_amd64.tar.gz
 chmod +x lumerad
 sudo mv lumerad /usr/local/bin
