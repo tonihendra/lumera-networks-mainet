@@ -19,8 +19,8 @@ Make sure your system meets the following prerequisites to onboard as a Genesis 
 
 ```shell
 wget https://github.com/LumeraProtocol/lumera/releases/download/v0.4.0/lumera_v0.4.0_linux_amd64.tar.gz
-tar xzvf lumera_latest_linux_amd64.tar.gz
-chmod +x lumerad
+tar xzvf lumera_v0.4.0_linux_amd64.tar.gz
+sudo ./install.sh
 sudo mv lumerad /usr/local/bin
 ```
 
@@ -44,19 +44,22 @@ sudo mv lumerad /usr/local/bin
 
 ## Step 2: Clone the Repository and verify Genesis file
 
+> **IMPORTANT!!!**
+> If you plan to create PR for your `gentx`, you need to have github account.
+
 0. Set network you are setting validator for:
 ```shell
-NETWORK="lumera-mainnet-1"
+NETWORK="mainnet"
 ```
 OR
 ```shell
-NETWORK="lumera-testnet-1"
+NETWORK="testnet"
 ```
 
-2. Clone the repository to your local machine using the following command:
+1. Clone the repository to your local machine using the following command:
 ```shell
-git clone <repository_url>
-cd <repository_name>
+git clone git@github.com:LumeraProtocol/lumera-networks.git
+cd lumera-networks
 ```
 
 ```shell
@@ -64,12 +67,13 @@ lumera-networks/
 ├── config/
 │   └── app.toml
 └── docs/
+│   └── GENESIS_VALIDATOR_ONBOARDING.md
 │   └── VALIDATOR_GUIDE.md
 ├── mainnet/
 │   ├── genesis.json
 │   ├── genesis.asc
 │   └── gentx/
-├── mainnet/
+├── testnet/
 │   ├── genesis.json
 │   ├── genesis.asc
 │   └── gentx/
