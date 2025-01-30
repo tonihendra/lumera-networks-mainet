@@ -472,22 +472,22 @@
           }
         ],
         "expedited_threshold": "0.667000000000000000",
-        "expedited_voting_period": "86400s",
-        "max_deposit_period": "172800s",
+        "expedited_voting_period": "172800s",
+        "max_deposit_period": "259200s",
         "min_deposit": [
           {
-            "amount": "1000000000",
+            "amount": "1250000000",
             "denom": "ulume"
           }
         ],
         "min_deposit_ratio": "0.010000000000000000",
-        "min_initial_deposit_ratio": "0.000000000000000000",
+        "min_initial_deposit_ratio": "0.002500000000000000",
         "proposal_cancel_dest": "",
         "proposal_cancel_ratio": "0.500000000000000000",
         "quorum": "0.334000000000000000",
         "threshold": "0.500000000000000000",
-        "veto_threshold": "0.334000000000000000",
-        "voting_period": "172800s"
+        "veto_threshold": "0.400000000000000000",
+        "voting_period": "604800s"
       },
       "proposals": [],
       "starting_proposal_id": "1",
@@ -573,14 +573,14 @@
     "mint": {
       "minter": {
         "annual_provisions": "0.000000000000000000",
-        "inflation": "0.130000000000000000"
+        "inflation": "0.137500000000000000"
       },
       "params": {
         "blocks_per_year": "3942000",
         "goal_bonded": "0.670000000000000000",
         "inflation_max": "0.200000000000000000",
         "inflation_min": "0.050000000000000000",
-        "inflation_rate_change": "0.150000000000000000",
+        "inflation_rate_change": "0.075000000000000000",
         "mint_denom": "ulume"
       }
     },
