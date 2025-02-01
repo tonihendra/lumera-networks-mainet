@@ -316,7 +316,7 @@
           "coins": [
             {
               "denom": "ulume",
-              "amount": "25000000000000"
+              "amount": "30000000000000"
             }
           ]
         },
@@ -360,7 +360,7 @@
       "supply": [
         {
           "denom": "ulume",
-          "amount": "233500000000000"
+          "amount": "238500000000000"
         }
       ],
       "denom_metadata": [
