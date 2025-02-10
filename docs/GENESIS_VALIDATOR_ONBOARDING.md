@@ -101,7 +101,7 @@ CHAIN_ID="lumera-$NETWORK-1"
 # Validator Configuration
 MONIKER="MyAwesomeValidator"
 KEYNAME="my_validator_key"
-AMOUNT="1000000upsl"
+AMOUNT="1000000ulume"
 VAL_DETAILS="My amazing validator"
 VAL_IDENTITY="A45BC..."
 VAL_SECURITY_CONTACT="security@myvalidator.com"
