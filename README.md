@@ -3,13 +3,15 @@
 This repository hosts Lumera Protocol Chain releases informat[i]()on and guides.
 
 ## Mainnet
-lumera-mainnet-1
+Chain ID:<br>
+**lumera-mainnet-1**
 
 ### Mainnet Status page
 Coming soon!
 
 ## Testnets
-Lumera-testnet-1
+Chain ID:<br>
+**lumera-testnet-1**
 
 ### Testnet Status page
 Coming soon!
