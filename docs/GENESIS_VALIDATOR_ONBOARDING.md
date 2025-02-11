@@ -121,13 +121,13 @@ lumerad init $MONIKER --chain-id $CHAIN_ID
 
 > **IMPORTANT!!!**
 > This will create two important files:
-> 	`$HOME/.lumerad/config/node_key.json`
-> 	`$HOME/.lumerad/config/priv_validator_key.json`
+> 	`$HOME/.lumera/config/node_key.json`
+> 	`$HOME/.lumera/config/priv_validator_key.json`
 > Keep them safe and secure. These files are required to run your validator node. Do not share these with anyone. Losing these files requires regeneration of your gentx.
 
 3. **Copy Genesis File:**
 ```shell
-cp $NETWORK/genesis.json $HOME/.lumerad/config
+cp $NETWORK/genesis.json $HOME/.lumera/config
 ```
 
 4. Before making changes, ensure the existing `genesis.json` file is valid:
@@ -246,8 +246,8 @@ Refer to the "Validator Operations Manual" for detailed instructions on how to s
 ## Important Notes
 
 1. **Key Security**
-   - Back up `$HOME/.lumerad/config/priv_validator_key.json`
-   - Back up `$HOME/.lumerad/config/node_key.json`
+   - Back up `$HOME/.lumera/config/priv_validator_key.json`
+   - Back up `$HOME/.lumera/config/node_key.json`
    - Safely store your mnemonic phrase and password used for key ring
    - Never share your private keys
 
