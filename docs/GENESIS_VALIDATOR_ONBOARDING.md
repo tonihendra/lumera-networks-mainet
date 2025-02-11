@@ -84,7 +84,7 @@ lumera-networks/
 
 2. Verify the hashes of the genesis file
 ```shell
-./create_genesis_hashes.sh $NETWORK
+./verify_genesis_hashes.sh $NETWORK
 ```
 
 > If the hashes do not match, something is wrong with the genesis file. Please do not proceed until the genesis file hashes are valid. Contact the core team if you encounter this issue.
@@ -206,10 +206,14 @@ cp `$HOME/.lumera/config/genesis.json $NETWORK/
 
 3. Calculate new hash of `genesis.json`
 ```shell
+./create_genesis_hashes.sh $NETWORK
+```
+Check new hashes
+```shell
 ./verify_genesis_hashes.sh $NETWORK
 ```
 
-3. Commit changes:
+4. Commit changes:
 ```shell
 git add $NETWORK/gentx/gentx-*.json $NETWORK/genesis.json $NETWORK/genesis.asc
 git commit -m "Add gentx and account for $MONIKER"
