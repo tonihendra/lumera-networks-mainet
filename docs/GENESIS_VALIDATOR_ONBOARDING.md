@@ -29,7 +29,7 @@ sudo mv lumerad /usr/local/bin
 - `MONIKER`: Your validator's moniker (e.g., `MyAwesomeValidator`).
 - `CHAIN_ID`: The chain ID of the network (`lumera-mainnet-1` or `lumera-testnet-1`).
 - `KEYNAME`: A name for your validator's key (e.g., `my_validator_key`).
-- `AMOUNT`: The initial amount of tokens you will receive for genesis staking (Reach out to Lumera Protocol).
+- `AMOUNT`: The initial amount of tokens you will receive for genesis staking (`1000000ulume`).
 - `VAL_COMMISSION_RATE`: The initial commission rate for your validator (e.g., "0.05").
 - `VAL_COMMISSION_MAX_RATE`: The maximum commission rate for your validator (e.g., "0.25").
 - `VAL_COMMISSION_MAX_CHANGE_RATE`: The maximum change rate for your commission (e.g., "0.05").
@@ -38,9 +38,6 @@ sudo mv lumerad /usr/local/bin
 - `VAL_IDENTITY`: Your validator's identity.
 - `VAL_SECURITY_CONTACT`: Your validator's security contact.
 - `VAL_WEBSITE`: Your validator's website (optional).
-
-> **IMPORTANT!!!**
-> Contact the core team and request amount of tokens you would be allocated for genesis staking.
 
 ## Step 2: Clone the Repository and verify Genesis file
 
@@ -155,10 +152,6 @@ echo "Validator Address: $VALIDATOR_ADDRESS"
 > Note this address for the next step and for your records
 
 7. **Add your account to Genesis:**
-
-> **IMPORTANT!!!**
-> You are already supposed to contact the core team about amount of tokens you would use for genesis staking. If not - do it now
-> Once amount is confirmed, add your account to genesis
 
 ```shell
 lumerad genesis add-genesis-account $VALIDATOR_ADDRESS $AMOUNT --keyring-backend file
