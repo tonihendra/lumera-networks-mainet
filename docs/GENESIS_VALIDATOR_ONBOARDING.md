@@ -84,7 +84,7 @@ lumera-networks/
 
 2. Verify the hashes of the genesis file
 ```shell
-./create_genesis_hashes.sh $NETWORK
+./verify_genesis_hashes.sh $NETWORK
 ```
 
 > If the hashes do not match, something is wrong with the genesis file. Please do not proceed until the genesis file hashes are valid. Contact the core team if you encounter this issue.
@@ -121,13 +121,13 @@ lumerad init $MONIKER --chain-id $CHAIN_ID
 
 > **IMPORTANT!!!**
 > This will create two important files:
-> 	`$HOME/.lumerad/config/node_key.json`
-> 	`$HOME/.lumerad/config/priv_validator_key.json`
+> 	`$HOME/.lumera/config/node_key.json`
+> 	`$HOME/.lumera/config/priv_validator_key.json`
 > Keep them safe and secure. These files are required to run your validator node. Do not share these with anyone. Losing these files requires regeneration of your gentx.
 
 3. **Copy Genesis File:**
 ```shell
-cp $NETWORK/genesis.json $HOME/.lumerad/config
+cp $NETWORK/genesis.json $HOME/.lumera/config
 ```
 
 4. Before making changes, ensure the existing `genesis.json` file is valid:
@@ -206,10 +206,14 @@ cp `$HOME/.lumera/config/genesis.json $NETWORK/
 
 3. Calculate new hash of `genesis.json`
 ```shell
+./create_genesis_hashes.sh $NETWORK
+```
+Check new hashes
+```shell
 ./verify_genesis_hashes.sh $NETWORK
 ```
 
-3. Commit changes:
+4. Commit changes:
 ```shell
 git add $NETWORK/gentx/gentx-*.json $NETWORK/genesis.json $NETWORK/genesis.asc
 git commit -m "Add gentx and account for $MONIKER"
@@ -242,8 +246,8 @@ Refer to the "Validator Operations Manual" for detailed instructions on how to s
 ## Important Notes
 
 1. **Key Security**
-   - Back up `$HOME/.lumerad/config/priv_validator_key.json`
-   - Back up `$HOME/.lumerad/config/node_key.json`
+   - Back up `$HOME/.lumera/config/priv_validator_key.json`
+   - Back up `$HOME/.lumera/config/node_key.json`
    - Safely store your mnemonic phrase and password used for key ring
    - Never share your private keys
 
