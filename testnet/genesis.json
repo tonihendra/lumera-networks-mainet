@@ -769,15 +769,6 @@
           ]
         },
         {
-          "address": "lumera1zudwyl92rgzess5722whhthd9am0q8qeekgqcy",
-          "coins": [
-            {
-              "denom": "ulume",
-              "amount": "12500000000000"
-            }
-          ]
-        },
-        {
           "address": "lumera1rew6tp6kjg2lu7e6ngg4q4dshn369pcm4jztyc",
           "coins": [
             {
@@ -1127,12 +1118,21 @@
               "amount": "1000000"
             }
           ]
-        }        
+        },
+        {
+          "address": "lumera1zudwyl92rgzess5722whhthd9am0q8qeekgqcy",
+          "coins": [
+            {
+              "denom": "ulume",
+              "amount": "12499986000000"
+            }
+          ]
+        }
       ],
       "supply": [
         {
           "denom": "ulume",
-          "amount": "231250014000000"
+          "amount": "231250000000000"
         }
       ],
       "denom_metadata": [
