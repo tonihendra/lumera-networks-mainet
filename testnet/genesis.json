@@ -801,6 +801,13 @@
           "pub_key": null,
           "account_number": "57",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "lumera1c4xhkuac23qjtcxmp7khc6hrk9mur4k7wu8uyx",
+          "pub_key": null,
+          "account_number": "58",
+          "sequence": "0"
         }
       ]
     },
@@ -1328,11 +1335,20 @@
           ]
         },        
         {
+          "address": "lumera1c4xhkuac23qjtcxmp7khc6hrk9mur4k7wu8uyx",
+          "coins": [
+            {
+              "denom": "ulume",
+              "amount": "1000000"
+            }
+          ]
+        },        
+        {
           "address": "lumera1zudwyl92rgzess5722whhthd9am0q8qeekgqcy",
           "coins": [
             {
               "denom": "ulume",
-              "amount": "12499973000000"
+              "amount": "12499972000000"
             }
           ]
         }
