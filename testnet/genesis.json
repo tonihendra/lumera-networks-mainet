@@ -1,7 +1,7 @@
 {
   "app_name": "lumerad",
   "app_version": "0.4.1",
-  "genesis_time": "2025-02-19T21:00:00Z",
+  "genesis_time": "2025-02-20T17:00:00Z",
   "chain_id": "lumera-testnet-1",
   "initial_height": 1,
   "app_hash": null,
