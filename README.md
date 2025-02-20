@@ -18,9 +18,9 @@ Minimum gas price:
 minimum-gas-prices = "0.025ulume"
 ```
 
-Peers:
+Seeds:
 ```
-persistent_peers = "8d7557e2e4e8c5d3b409663764d9fdc22d2c3449@44.204.100.172:26656"
+persistent_peers = "10a50e7a88561b22a8d1f6f0fb0b8e54412229ab@seeds.lumera.io:26656"
 ```
 
 ### Testnet Status page
