@@ -3,32 +3,41 @@
 This repository hosts Lumera Protocol Chain releases informat[i]()on and guides.
 
 ## Mainnet
-Chain ID:<br>
+#### Chain ID
 **lumera-mainnet-1**
 
-### Mainnet Status page
+#### Genesis
 Coming soon!
 
-## Testnets
-Chain ID:<br>
+#### Minimum gas price
+Coming soon!
+
+#### Seeds
+Coming soon!
+
+#### Explorer
+Coming soon!
+
+## Testnet
+#### Chain ID
 **lumera-testnet-1**
 
-Minimum gas price:
+#### Genesis
+[Testnet Genesis](testnet) 
+
+#### Minimum gas price
 ```
 minimum-gas-prices = "0.025ulume"
 ```
 
-Seeds:
+#### Seeds
 ```
 seeds = "10a50e7a88561b22a8d1f6f0fb0b8e54412229ab@seeds.lumera.io:26656"
 ```
 
-### Testnet Status page
-Coming soon!
+#### Explorer
+https://portal.lumera.io/lumera-testnet-1
 
-## Genesis
-* Mainnet [genesis](mainnet)
-* Testnet [genesis](testnet) 
 
 ## Guides
 * [Genesis Validator Onboarding Guide for Lumera Protocol](docs/GENESIS_VALIDATOR_ONBOARDING.md)
@@ -54,10 +63,6 @@ The following table shows the minimum recommended hardware requirements for the 
 * Go Installed
 * Git Installed
 * AWS CLI (only for snapshot sync, aws account not required)
-
-## Sentry Seed Nodes
-For the **testnet**, find a list of seed nodes here ... <br>
-For the **mainnet**, find a list of seed nodes here ...
 
 ## Helpful links
 * Official Documentation
