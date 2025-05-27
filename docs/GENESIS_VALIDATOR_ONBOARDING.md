@@ -1,8 +1,11 @@
-# Genesis Validator Onboarding Guide for Lumera Protocol
+# MAINNET Genesis Validator Onboarding Guide for Lumera Protocol
 
 ## Introduction
 
-This guide provides step-by-step instructions for validators who wish to join the [Your Chain Name] network at genesis. Please follow each step carefully to ensure a smooth onboarding process.
+This guide provides step-by-step instructions for validators who wish to join the Lmera Protocal **mainnet** at genesis. Please follow each step carefully to ensure a smooth onboarding process.
+
+> **Do *NOT* edit `genesis.json`.** 
+> Your PR must contain **one file only** in the `gentx/` folder.
 
 ## Step 1: Prerequisites
 
@@ -18,8 +21,8 @@ Make sure your system meets the following prerequisites to onboard as a Genesis 
 ### Install the `lumerad` binary
 
 ```shell
-wget https://github.com/LumeraProtocol/lumera/releases/download/v0.4.1/lumera_v0.4.1_linux_amd64.tar.gz
-tar xzvf lumera_v0.4.1_linux_amd64.tar.gz
+wget https://github.com/LumeraProtocol/lumera/releases/download/v1.1.0/lumera_v1.1.0_linux_amd64.tar.gz
+tar xzvf lumera_v1.1.0_linux_amd64.tar.gz
 sudo ./install.sh
 sudo mv lumerad /usr/local/bin
 ```
@@ -27,13 +30,13 @@ sudo mv lumerad /usr/local/bin
 ### Prepare required validator information
 
 - `MONIKER`: Your validator's moniker (e.g., `MyAwesomeValidator`).
-- `CHAIN_ID`: The chain ID of the network (`lumera-mainnet-1` or `lumera-testnet-1`).
+- `CHAIN_ID`: The chain ID of the network (`lumera-mainnet-1`).
 - `KEYNAME`: A name for your validator's key (e.g., `my_validator_key`).
 - `AMOUNT`: The initial amount of tokens you will receive for genesis staking (`1000000ulume`).
 - `VAL_COMMISSION_RATE`: The initial commission rate for your validator (e.g., "0.05").
 - `VAL_COMMISSION_MAX_RATE`: The maximum commission rate for your validator (e.g., "0.25").
 - `VAL_COMMISSION_MAX_CHANGE_RATE`: The maximum change rate for your commission (e.g., "0.05").
-- `MIN_SELF_DELEGATION`:
+- `MIN_SELF_DELEGATION`:`1000000ulume`
 - `VAL_DETAILS`: Additional details about your validator (optional).
 - `VAL_IDENTITY`: Your validator's identity.
 - `VAL_SECURITY_CONTACT`: Your validator's security contact.
@@ -43,15 +46,6 @@ sudo mv lumerad /usr/local/bin
 
 > **IMPORTANT!!!**
 > If you plan to create PR for your `gentx`, you need to have github account.
-
-0. Set network you are setting validator for:
-```shell
-NETWORK="mainnet"
-```
-OR
-```shell
-NETWORK="testnet"
-```
 
 1. Clone the repository to your local machine using the following command:
 ```shell
@@ -68,23 +62,12 @@ lumera-networks/
 │   └── VALIDATOR_GUIDE.md
 ├── mainnet/
 │   ├── genesis.json
-│   ├── genesis.asc
 │   └── gentx/
-├── testnet/
-│   ├── genesis.json
-│   ├── genesis.asc
-│   └── gentx/
-├── create_genesis_hashes.sh
-├── verify_genesis_hashes.sh
+├── scripts/
+│   └── ci/
+│      └── validate_gentx.sh
 ├── README.md
 ```
-
-2. Verify the hashes of the genesis file
-```shell
-./verify_genesis_hashes.sh $NETWORK
-```
-
-> If the hashes do not match, something is wrong with the genesis file. Please do not proceed until the genesis file hashes are valid. Contact the core team if you encounter this issue.
 
 ## Step 3: Prepare Your Validator Account and Initialize Chain
 
@@ -93,7 +76,7 @@ lumera-networks/
 1. **Setup environment variables**
 ```shell
 # Network Configuration
-CHAIN_ID="lumera-$NETWORK-1"
+CHAIN_ID="lumera-mainnet-1"
 
 # Validator Configuration
 MONIKER="MyAwesomeValidator"
@@ -124,7 +107,7 @@ lumerad init $MONIKER --chain-id $CHAIN_ID
 
 3. **Copy Genesis File:**
 ```shell
-cp $NETWORK/genesis.json $HOME/.lumera/config
+cp mainnet/genesis.json $HOME/.lumera/config
 ```
 
 4. Before making changes, ensure the existing `genesis.json` file is valid:
@@ -184,7 +167,7 @@ lumerad genesis gentx $KEYNAME $AMOUNT \
 lumerad genesis validate
 ```
 
-## Step 5: Submit Your gentx and Updated `genesis.json` file
+## Step 5: Submit Your gentx
 
 1. Create a new branch in the repository based on the `main` branch:
 ```shell
@@ -193,27 +176,20 @@ git checkout -b validator-gentx-$MONIKER
 
 2. Copy your gentx file to the `gentx` directory inside repository
 ```shell
-cp `$HOME/.lumera/config/gentx/gentx-*.json $NETWORK/gentx`
-cp `$HOME/.lumera/config/genesis.json $NETWORK/
+cp `$HOME/.lumera/config/gentx/gentx-*.json mainnet/gentx`
 ```
 
-3. Calculate new hash of `genesis.json`
-```shell
-./create_genesis_hashes.sh $NETWORK
-```
-Check new hashes
-```shell
-./verify_genesis_hashes.sh $NETWORK
-```
+> AGAIN: DO ADD UPDATED `genesis.json` FILE INTO PR
 
-4. Commit changes:
+
+1. Commit changes:
 ```shell
 git add $NETWORK/gentx/gentx-*.json $NETWORK/genesis.json $NETWORK/genesis.asc
 git commit -m "Add gentx and account for $MONIKER"
 git push origin validator-gentx-$MONIKER
 ```
 
-5. Create a Pull Request (PR) to merge your branch into the `main` branch, using following PR template.
+1. Create a Pull Request (PR) to merge your branch into the `main` branch, using following PR template.
 ```md
 ## Validator Information
 Moniker: $MONIKER
@@ -227,12 +203,12 @@ Moniker: $MONIKER
 - [ ] I will be available during the network launch
 ```
 
-## Step 7: Await Approval
+## Step 6: Await Approval
 
 1. Wait for the core team to review your PR and merge it to `main`.
 2. Once merged, your gentx will be included in the final genesis file.
 
-## Step 8: Validator Node Setup
+## Step 7: Validator Node Setup
 
 Refer to the "Validator Operations Manual" for detailed instructions on how to set up and run your validator node.
 
@@ -245,9 +221,9 @@ Refer to the "Validator Operations Manual" for detailed instructions on how to s
    - Never share your private keys
 
 2. **Timeline**
-   - PR submission deadline: [DEADLINE]
-   - Genesis file publication: [GENESIS_DATE]
-   - Network launch: [LAUNCH_DATE]
+   - PR submission deadline: `TBA`
+   - Genesis file publication: `TBA`
+   - Network launch: `TBA`
 
 3. **Requirements**
    - All commits must be signed with GPG
@@ -256,9 +232,8 @@ Refer to the "Validator Operations Manual" for detailed instructions on how to s
    - Must be available at network launch time
 
 4. **Communication**
-   - Join validator chat: [CHAT_LINK]
-   - Monitor announcements: [ANNOUNCEMENT_CHANNEL]
-   - Emergency contact: [EMERGENCY_CONTACT]
+   - Join validator chat: [Discord](https://discord.com/channels/774465063540097050/1341907501427331153)
+   - Monitor announcements: [Discord](https://discord.com/channels/774465063540097050/1341907672668176394)
 
 ## Post-Submission
 
@@ -274,4 +249,4 @@ Refer to the "Validator Operations Manual" for detailed instructions on how to s
    - Report any issues immediately
 
 ---
-(C) 2024 Lumera Protocol
+(C) 2025 Lumera Protocol
