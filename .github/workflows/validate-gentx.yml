@@ -28,7 +28,7 @@ jobs:
           tar -xzf lumera_v1.1.0_linux_amd64.tar.gz
           chmod +x lumerad
           sudo mv lumerad /usr/local/bin/
-          sudo mv libwasmvm.x86_64.so /usr/liblum/
+          sudo mv libwasmvm.x86_64.so /usr/local/lib/
 
       - name: Run CI validation script
         run: |
