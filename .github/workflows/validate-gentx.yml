@@ -44,6 +44,51 @@ jobs:
           echo "Found gentx files to validate:"
           ls -la mainnet/gentx/*.json
 
+      - name: Validate PR file requirements
+        run: |
+          echo "Checking PR file requirements..."
+          
+          # Get list of changed files in this PR
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # For automatic PR triggers
+            git diff --name-only origin/${{ github.base_ref }}...HEAD > changed_files.txt
+          elif [ -n "${{ github.event.inputs.pr_number }}" ]; then
+            # For manual triggers, get the PR's changed files
+            gh pr diff ${{ github.event.inputs.pr_number }} --name-only > changed_files.txt
+          else
+            echo "Unable to determine changed files"
+            exit 1
+          fi
+          
+          echo "Changed files in this PR:"
+          cat changed_files.txt
+          
+          # Check if mainnet/genesis.json is modified
+          if grep -q "^mainnet/genesis.json$" changed_files.txt; then
+            echo "❌ ERROR: PRs must not modify mainnet/genesis.json"
+            echo "The genesis file should only be updated by maintainers after collecting all gentx files."
+            exit 1
+          fi
+          
+          # Count gentx files in the PR
+          gentx_count=$(grep -c "^mainnet/gentx/.*\.json$" changed_files.txt || echo "0")
+          
+          if [ "$gentx_count" -eq 0 ]; then
+            echo "❌ ERROR: No gentx files found in this PR"
+            echo "PRs should add exactly one gentx file to mainnet/gentx/"
+            exit 1
+          elif [ "$gentx_count" -gt 1 ]; then
+            echo "❌ ERROR: Multiple gentx files found in this PR ($gentx_count files)"
+            echo "PRs should add exactly one gentx file to mainnet/gentx/"
+            echo "Found gentx files:"
+            grep "^mainnet/gentx/.*\.json$" changed_files.txt
+            exit 1
+          fi
+          
+          echo "✅ PR validation passed: exactly 1 gentx file, no genesis.json modifications"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install tooling (jq + lumerad)
         run: |
           sudo apt-get update -qq
