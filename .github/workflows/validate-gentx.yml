@@ -16,6 +16,10 @@ on:
 jobs:
   validate-gentx:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout repo
