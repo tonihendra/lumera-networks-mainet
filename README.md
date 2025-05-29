@@ -72,7 +72,7 @@ The following table shows the minimum recommended hardware requirements for the 
 ## Get Involved
 Lumera Protcol is a community driven project; we welcome all contribution.
 
-* Discuss with Discord community<br>
+* [Discuss with Discord community](https://discord.gg/lumeraprotocol)<br>
 * Join Lumera on Telegram<br>
-* Github repositories<br>
-* Follows us on Twitter<br>
+* [Github repositories](https://github.com/LumeraProtocol)<br>
+* [Follows us on Twitter](https://x.com/lumeraprotocol)<br>
