@@ -74,14 +74,16 @@ jobs:
           echo "" >> comment_body.txt
           if [ "$(cat $GITHUB_OUTPUT | grep validation_status=success)" ]; then
             echo "✅ **Status: PASSED**" >> comment_body.txt
+            echo "" >> comment_body.txt
+            echo "All gentx files have been successfully validated! 🎉" >> comment_body.txt
           else
             echo "❌ **Status: FAILED**" >> comment_body.txt
+            echo "" >> comment_body.txt
+            echo "### Validation Output:" >> comment_body.txt
+            echo '```' >> comment_body.txt
+            cat validation_output.txt >> comment_body.txt
+            echo '```' >> comment_body.txt
           fi
-          echo "" >> comment_body.txt
-          echo "### Validation Output:" >> comment_body.txt
-          echo '```' >> comment_body.txt
-          cat validation_output.txt >> comment_body.txt
-          echo '```' >> comment_body.txt
           echo "" >> comment_body.txt
           echo "_Validation run at $(date)_" >> comment_body.txt
 
