@@ -45,6 +45,7 @@ jobs:
           ls -la mainnet/gentx/*.json
 
       - name: Validate PR file requirements
+        id: pr_validation
         run: |
           echo "Checking PR file requirements..."
           
@@ -63,31 +64,63 @@ jobs:
           echo "Changed files in this PR:"
           cat changed_files.txt
           
+          # Initialize validation status
+          validation_error=""
+          
           # Check if mainnet/genesis.json is modified
           if grep -q "^mainnet/genesis.json$" changed_files.txt; then
-            echo "❌ ERROR: PRs must not modify mainnet/genesis.json"
-            echo "The genesis file should only be updated by maintainers after collecting all gentx files."
-            exit 1
+            validation_error="❌ **ERROR: PRs must not modify mainnet/genesis.json**\n\nThe genesis file should only be updated by maintainers after collecting all gentx files.\n\n**Required changes:**\n- Remove mainnet/genesis.json from this PR\n- Only include your gentx file in mainnet/gentx/"
           fi
           
           # Count gentx files in the PR
           gentx_count=$(grep -c "^mainnet/gentx/.*\.json$" changed_files.txt || echo "0")
           
-          if [ "$gentx_count" -eq 0 ]; then
-            echo "❌ ERROR: No gentx files found in this PR"
-            echo "PRs should add exactly one gentx file to mainnet/gentx/"
-            exit 1
-          elif [ "$gentx_count" -gt 1 ]; then
-            echo "❌ ERROR: Multiple gentx files found in this PR ($gentx_count files)"
-            echo "PRs should add exactly one gentx file to mainnet/gentx/"
-            echo "Found gentx files:"
-            grep "^mainnet/gentx/.*\.json$" changed_files.txt
+          if [ "$gentx_count" -eq 0 ] && [ -z "$validation_error" ]; then
+            validation_error="❌ **ERROR: No gentx files found in this PR**\n\nPRs should add exactly one gentx file to mainnet/gentx/\n\n**Required changes:**\n- Add your gentx file to mainnet/gentx/ directory\n- Ensure the file follows the naming convention: gentx-[validator-address].json"
+          elif [ "$gentx_count" -gt 1 ] && [ -z "$validation_error" ]; then
+            validation_error="❌ **ERROR: Multiple gentx files found in this PR ($gentx_count files)**\n\nPRs should add exactly one gentx file to mainnet/gentx/\n\n**Found gentx files:**\n$(grep "^mainnet/gentx/.*\.json$" changed_files.txt | sed 's/^/- /')\n\n**Required changes:**\n- Keep only one gentx file in this PR\n- Create separate PRs for additional validators"
+          fi
+          
+          if [ -n "$validation_error" ]; then
+            echo "pr_validation_status=failed" >> $GITHUB_OUTPUT
+            echo -e "$validation_error" > pr_validation_error.txt
+            echo -e "$validation_error"
             exit 1
           fi
           
+          echo "pr_validation_status=passed" >> $GITHUB_OUTPUT
           echo "✅ PR validation passed: exactly 1 gentx file, no genesis.json modifications"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on PR validation failure
+        if: failure() && steps.pr_validation.outputs.pr_validation_status == 'failed'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let commentBody = "## 🚫 PR Validation Failed\n\n";
+            
+            if (fs.existsSync('pr_validation_error.txt')) {
+              const errorContent = fs.readFileSync('pr_validation_error.txt', 'utf8');
+              commentBody += errorContent;
+            }
+            
+            commentBody += "\n\n---\n";
+            commentBody += "**This PR is blocked from merging until these issues are resolved.**\n";
+            commentBody += `_Validation failed at ${new Date().toISOString()}_`;
+            
+            // Determine PR number
+            const prNumber = context.payload.pull_request?.number || '${{ github.event.inputs.pr_number }}';
+            
+            if (prNumber && prNumber !== 'undefined') {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: parseInt(prNumber),
+                body: commentBody
+              });
+            }
 
       - name: Install tooling (jq + lumerad)
         run: |
