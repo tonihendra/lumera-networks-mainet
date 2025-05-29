@@ -69,7 +69,7 @@ jobs:
           
           # Check if mainnet/genesis.json is modified
           if grep -q "^mainnet/genesis.json$" changed_files.txt; then
-            validation_error="❌ **ERROR: PRs must not modify mainnet/genesis.json**\n\nThe genesis file should only be updated by maintainers after collecting all gentx files.\n\n**Required changes:**\n- Remove mainnet/genesis.json from this PR\n- Only include your gentx file in mainnet/gentx/"
+            validation_error="❌ **ERROR: PRs must not modify mainnet/genesis.json**\n\nThe genesis file should only be updated by maintainers after collecting all gentx files.\n\n**How the process works:**\n- Your genesis account will be automatically created from the public key in your gentx file\n- Maintainers will collect all gentx files and generate the final genesis.json\n- No manual genesis.json modifications are needed from contributors\n\n**Required changes:**\n- Remove mainnet/genesis.json from this PR\n- Only include your gentx file in mainnet/gentx/"
           fi
           
           # Count gentx files in the PR
