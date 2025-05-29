@@ -3,8 +3,8 @@ name: Validate gentx PR
 on:
   pull_request:
     paths:
-      - "gentx/**.json"         # run only when gentx files change
-      - ".github/workflows/**"  # …or the workflow itself
+      - "mainnet/gentx/**.json"   # run only when gentx files change
+      - ".github/workflows/**"    # …or the workflow itself
 
 jobs:
   validate-gentx:

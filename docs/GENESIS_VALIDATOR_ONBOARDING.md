@@ -197,9 +197,8 @@ Moniker: $MONIKER
 ## Checklist
 - [ ] I have backed up my validator keys securely
 - [ ] I have stored my mnemonic phrase safely
-- [ ] I have verified new genesis file is valid (i ran `lumerad genesis validate`)
+- [ ] I have verified new genesis file is valid (I ran `lumerad genesis validate`)
 - [ ] I have verified my gentx file is valid
-- [ ] I created new hashes (i ran `./verify_genesis_hashes.sh $NETWORK`)
 - [ ] I will be available during the network launch
 ```
 
