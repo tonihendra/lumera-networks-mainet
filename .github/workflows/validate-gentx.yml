@@ -29,6 +29,7 @@ jobs:
           chmod +x lumerad
           sudo mv lumerad /usr/local/bin/
           sudo mv libwasmvm.x86_64.so /usr/local/lib/
+          sudo ldconfig
 
       - name: Run CI validation script
         run: |
