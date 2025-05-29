@@ -1,10 +1,12 @@
 name: Validate gentx PR
+# Updated to trigger validation for existing PRs
 
 on:
   pull_request:
     paths:
       - "mainnet/gentx/**.json"   # run only when gentx files change
       - ".github/workflows/**"    # …or the workflow itself
+  workflow_dispatch:              # allow manual triggering
 
 jobs:
   validate-gentx:
