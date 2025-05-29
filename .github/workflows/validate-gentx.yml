@@ -7,6 +7,11 @@ on:
       - "mainnet/gentx/**.json"   # run only when gentx files change
       - ".github/workflows/**"    # …or the workflow itself
   workflow_dispatch:              # allow manual triggering
+    inputs:
+      pr_number:
+        description: 'PR number to validate (optional)'
+        required: false
+        type: string
 
 jobs:
   validate-gentx:
@@ -17,6 +22,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0        # we need full history for diffs
+
+      - name: Checkout PR if specified
+        if: github.event.inputs.pr_number
+        run: |
+          gh pr checkout ${{ github.event.inputs.pr_number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for gentx files
+        run: |
+          if [ ! -d "mainnet/gentx" ] || [ -z "$(ls -A mainnet/gentx/*.json 2>/dev/null)" ]; then
+            echo "No gentx files found in mainnet/gentx/ directory"
+            echo "This workflow validates gentx files in PRs that add files to mainnet/gentx/"
+            exit 0
+          fi
+          echo "Found gentx files to validate:"
+          ls -la mainnet/gentx/*.json
 
       - name: Install tooling (jq + lumerad)
         run: |
