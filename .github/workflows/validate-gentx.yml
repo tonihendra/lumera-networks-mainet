@@ -241,7 +241,7 @@ jobs:
           # Prepare comment body
           echo "## 🔍 Gentx Validation Results" > comment_body.txt
           echo "" >> comment_body.txt
-          if [ "$(cat $GITHUB_OUTPUT | grep validation_status=success)" ]; then
+          if [ "${{ steps.validation.outcome }}" = "success" ]; then
             echo "✅ **Status: PASSED**" >> comment_body.txt
             echo "" >> comment_body.txt
             echo "All gentx files have been successfully validated! 🎉" >> comment_body.txt
