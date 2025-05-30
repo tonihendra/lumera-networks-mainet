@@ -170,7 +170,10 @@ jobs:
           "${BINARY}" init ci --chain-id "${CHAIN_ID}" --home "${HOME_DIR}" >/dev/null
           
           # 2. Replace genesis with template committed in repo
-          cp "${GENESIS_TEMPLATE}" "${HOME_DIR}/config/genesis.json"
+          if ! cp "${GENESIS_TEMPLATE}" "${HOME_DIR}/config/genesis.json" 2>/dev/null; then
+            echo "• ${GENESIS_TEMPLATE} not found, trying mainnet/base_genesis.json as fallback"
+            cp "mainnet/base_genesis.json" "${HOME_DIR}/config/genesis.json"
+          fi
           mkdir -p "${HOME_DIR}/config/gentx"
           
           # 3. Iterate over every gentx file in the repo
