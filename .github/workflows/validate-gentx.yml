@@ -228,14 +228,16 @@ jobs:
           # If we get here, validation succeeded
           echo "validation_status=success" >> $GITHUB_OUTPUT
           echo "Validation completed successfully!"
-        continue-on-error: true
 
       - name: Handle validation failure
-        if: steps.validation.outcome == 'failure'
+        if: failure() && steps.validation.outcome == 'failure'
         run: |
           echo "validation_status=failure" >> $GITHUB_OUTPUT
           echo "Validation failed!"
-          
+
+      - name: Prepare comment body
+        if: always()
+        run: |
           # Prepare comment body
           echo "## 🔍 Gentx Validation Results" > comment_body.txt
           echo "" >> comment_body.txt
@@ -248,11 +250,12 @@ jobs:
             echo "" >> comment_body.txt
             echo "### Validation Output:" >> comment_body.txt
             echo '```' >> comment_body.txt
-            cat validation_output.txt >> comment_body.txt
+            echo "Validation failed during execution" >> comment_body.txt
             echo '```' >> comment_body.txt
           fi
           echo "" >> comment_body.txt
           echo "_Validation run at $(date)_" >> comment_body.txt
+          
 
       - name: Comment on PR (manual trigger)
         if: github.event.inputs.pr_number
