@@ -51,7 +51,7 @@
       "supply": [],
       "denom_metadata": [
         {
-          "description": "The native token of lumera",
+          "description": "The native token of the lumera protocol",
           "denom_units": [
             {
               "denom": "ulume",
@@ -155,7 +155,7 @@
         "min_deposit": [
           {
             "denom": "ulume",
-            "amount": "1250000000"
+            "amount": "1000000000"
           }
         ],
         "max_deposit_period": "259200s",
@@ -282,7 +282,7 @@
         "min_signed_per_window": "0.100000000000000000",
         "downtime_jail_duration": "3600s",
         "slash_fraction_double_sign": "0.050000000000000000",
-        "slash_fraction_downtime": "0.005000000000000000"
+        "slash_fraction_downtime": "0.001000000000000000"
       },
       "signing_infos": [],
       "missed_blocks": []
