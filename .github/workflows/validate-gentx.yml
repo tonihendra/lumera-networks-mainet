@@ -3,9 +3,9 @@ name: Validate gentx PR
 
 on:
   pull_request:
+    types: [opened, synchronize]  # only run on PR open and updates
     paths:
       - "mainnet/gentx/**.json"   # run only when gentx files change
-      - ".github/workflows/**"    # …or the workflow itself
   workflow_dispatch:              # allow manual triggering
     inputs:
       pr_number:
