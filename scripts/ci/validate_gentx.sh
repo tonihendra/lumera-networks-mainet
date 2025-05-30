@@ -8,7 +8,7 @@ DENOM="ulume"
 AMOUNT="1000000${DENOM}"        # 1 LUME
 BINARY="lumerad"
 HOME_DIR="$(pwd)/_ci_home"      # throw-away directory
-GENESIS_TEMPLATE="mainnet/base_genesis.json"
+GENESIS_TEMPLATE="mainnet/genesis.json"
 # ---------------------------------------------
 
 echo "🔧 CI gentx validation started"
