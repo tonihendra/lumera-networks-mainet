@@ -182,7 +182,7 @@ cp `$HOME/.lumera/config/gentx/gentx-*.json mainnet/gentx`
 
 1. Commit changes:
 ```shell
-git add $NETWORK/gentx/gentx-*.json $NETWORK/genesis.json $NETWORK/genesis.asc
+git add $NETWORK/gentx/gentx-*.json
 git commit -m "Add gentx and account for $MONIKER"
 git push origin validator-gentx-$MONIKER
 ```
