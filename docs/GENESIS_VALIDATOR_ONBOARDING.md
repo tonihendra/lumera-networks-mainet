@@ -179,8 +179,6 @@ git checkout -b validator-gentx-$MONIKER
 cp `$HOME/.lumera/config/gentx/gentx-*.json mainnet/gentx`
 ```
 
-> AGAIN: DO ADD UPDATED `genesis.json` FILE INTO PR
-
 
 1. Commit changes:
 ```shell
