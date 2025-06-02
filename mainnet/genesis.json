@@ -37,7 +37,15 @@
         "sig_verify_cost_ed25519": "590",
         "sig_verify_cost_secp256k1": "1000"
       },
-      "accounts": []
+      "accounts": [
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "lumera1z6nr8ke4zam5dskcjceky4ps2h50tnhjxfdw6g",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        }
+      ]
     },
     "authz": {
       "authorization": []
@@ -47,8 +55,23 @@
         "send_enabled": [],
         "default_send_enabled": true
       },
-      "balances": [],
-      "supply": [],
+      "balances": [
+        {
+          "address": "lumera1z6nr8ke4zam5dskcjceky4ps2h50tnhjxfdw6g",
+          "coins": [
+            {
+              "denom": "ulume",
+              "amount": "1000000"
+            }
+          ]
+        }
+      ],
+      "supply": [
+        {
+          "denom": "ulume",
+          "amount": "1000000"
+        }
+      ],
       "denom_metadata": [
         {
           "description": "The native token of the lumera protocol",
@@ -128,7 +151,7 @@
       "validator_slash_events": []
     },
     "evidence": {
-	      "evidence": []
+      "evidence": []
     },
     "feegrant": {
       "allowances": []
@@ -309,7 +332,7 @@
         "minimum_stake_for_sn": {
           "denom": "ulume",
           "amount": "25000000000"
-        },        
+        },
         "inactivity_penalty_period": "86400s",
         "reporting_threshold": "10",
         "slashing_threshold": "5",
