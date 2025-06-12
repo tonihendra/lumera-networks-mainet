@@ -36,7 +36,7 @@ sudo mv lumerad /usr/local/bin
 - `VAL_COMMISSION_RATE`: The initial commission rate for your validator (e.g., "0.05").
 - `VAL_COMMISSION_MAX_RATE`: The maximum commission rate for your validator (e.g., "0.25").
 - `VAL_COMMISSION_MAX_CHANGE_RATE`: The maximum change rate for your commission (e.g., "0.05").
-- `MIN_SELF_DELEGATION`:`1000000ulume`
+- `MIN_SELF_DELEGATION`:`1`
 - `VAL_DETAILS`: Additional details about your validator (optional).
 - `VAL_IDENTITY`: Your validator's identity.
 - `VAL_SECURITY_CONTACT`: Your validator's security contact.
