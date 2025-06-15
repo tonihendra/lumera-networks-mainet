@@ -12,15 +12,15 @@
         },
         "commission": {
           "rate": "0.050000000000000000",
-          "max_rate": "0.200000000000000000",
+          "max_rate": "0.250000000000000000",
           "max_change_rate": "0.050000000000000000"
         },
         "min_self_delegation": "1",
         "delegator_address": "",
-        "validator_address": "lumeravaloper1hvm7j06xmveg4m8ys3v6ud9u4es557nqjk5gmk",
+        "validator_address": "lumeravaloper1h29ytl9w5wdhkan8h553dua9kq4wuefx0uqkpy",
         "pubkey": {
           "@type": "/cosmos.crypto.ed25519.PubKey",
-          "key": "PJ46U5zngssMwIvT1B2dPu86gu/7zYYgU3dXskWo4Oo="
+          "key": "EWqRGsN+c1/iba3YKubIPMK8ccr3gBhqhD8Y8boh+UM="
         },
         "value": {
           "denom": "ulume",
@@ -28,7 +28,7 @@
         }
       }
     ],
-    "memo": "28703891098785f48d033c371a0ddaa6d69e0eba@127.0.0.1:26656",
+    "memo": "f41c49bded3b2b62ba18db058943e7c4aa4c3cd0@167.235.49.172:26656",
     "timeout_height": "0",
     "extension_options": [],
     "non_critical_extension_options": []
@@ -38,7 +38,7 @@
       {
         "public_key": {
           "@type": "/cosmos.crypto.secp256k1.PubKey",
-          "key": "A9AX/ctRgr6xH+MotBIsReaYKDtHUEjV+iZcBIAL4nLu"
+          "key": "A/S9SvSuJP8ksCU0gblStVxh4U9PXNueTpBo1qj78iu6"
         },
         "mode_info": {
           "single": {
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "ogXF0rYMLCH0mvaZuz+CKBsoRKX4QuJIWqXsYyO/RtgvfGvyzD4MQapKEw6l5u6yC3i+Qn6gbOpjXQfXXlQv5A=="
+    "MeiXU1L2n6DLLnoWiZ5t1vbsf7y7bvWoXdy5A01UADoIsEA9tmi/tSIU6/5uAjkEbhE0U9+gSSaXx6q1BkYegg=="
   ]
 }
